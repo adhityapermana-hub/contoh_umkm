@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftHub Artisan - Kerajinan Tangan Berkualitas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e6b325;
+            --primary-dark: #d4a017;
+            --secondary: #2c3e50;
+            --light: #f9f7f2;
+            --dark: #333;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --whatsapp: #25D366;
+            --gradient: linear-gradient(135deg, #e6b325 0%, #ffd166 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--gray);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .btn:hover:before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 5px 15px rgba(230, 179, 37, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(230, 179, 37, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1da851;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header & Navbar */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transform: translateY(0);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .logo i {
+            color: var(--primary);
+            margin-right: 10px;
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 40px;
+            position: relative;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            left: 0;
+            bottom: 0;
+            transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            background: var(--gradient);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 5px 15px rgba(230, 179, 37, 0.3);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            background: var(--whatsapp);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            animation: none;
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            left: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            left: 85px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 180px 0 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.3s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.5s;
+        }
+
+        .hero-buttons {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s forwards 0.7s;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: all 0.6s ease;
+        }
+
+        .about-img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.1);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            margin-bottom: 25px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            flex: 1 1 calc(50% - 25px);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature i {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8rem;
+            margin-top: 5px;
+        }
+
+        /* Products Section */
+        .products {
+            background-color: var(--light);
+            position: relative;
+        }
+
+        .products:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23f9f7f2" width="100" height="100"/><path fill="%23e6b325" opacity="0.1" d="M0,0 L100,0 L100,100 Z"/></svg>');
+            z-index: 0;
+        }
+
+        .products .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            z-index: 1;
+        }
+
+        .product-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.15);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: inline-block;
+            background: rgba(230, 179, 37, 0.1);
+            padding: 5px 15px;
+            border-radius: 50px;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 20px;
+        }
+
+        /* Location Section */
+        .location-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .location-info h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .location-detail:hover {
+            transform: translateX(10px);
+        }
+
+        .location-detail i {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        .map-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 450px;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Testimonials */
+        .testimonial-slider {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .testimonial-container {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .testimonial-card {
+            min-width: 100%;
+            padding: 50px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 5rem;
+            color: rgba(230, 179, 37, 0.1);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 35px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            padding: 3px;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .dot:hover {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item i {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #eee;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(230, 179, 37, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-right: 10px;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: translateY(-5px) rotate(10deg);
+        }
+
+        .footer-links h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:before {
+            content: '→';
+            margin-right: 10px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-links a:hover:before {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Particle Animation */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatParticle 15s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img, .about-text {
+                width: 100%;
+            }
+            
+            .about-img {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 60px;
+                transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 0 0 30px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 150px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 30px;
+            }
+            
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                bottom: 25px;
+                left: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .location-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6281234567890?text=Halo%20CraftHub%20Artisan,%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" 
+       class="whatsapp-float" 
+       target="_blank"
+       id="whatsappButton">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat via WhatsApp</span>
+    </a>
+
+    <!-- Header & Navbar -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-hands"></i> CraftHub Artisan
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#location">Lokasi</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Kerajinan Tangan Berkualitas, Hasil Karya Lokal</h1>
+            <p>Kami menghadirkan produk kerajinan tangan unik dan berkualitas tinggi yang dibuat dengan penuh cinta oleh pengrajin lokal terbaik Indonesia.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Lihat Produk</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20CraftHub%20Artisan,%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" 
+                   class="btn btn-whatsapp" 
+                   target="_blank"
+                   style="margin-left: 15px;">
+                    <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPyKjI6aE2g4--jhFPP4rL2rmpRSQTFB5hCQ&s" alt="Tentang CraftHub Artisan">
+                </div>
+                <div class="about-text">
+                    <h2>Tentang CraftHub Artisan</h2>
+                    <p>Kami adalah UMKM yang berdedikasi untuk melestarikan dan mengembangkan kerajinan tangan tradisional Indonesia. Setiap produk kami dibuat dengan ketelitian tinggi, memadukan keahlian turun-temurun dengan sentuhan modern.</p>
+                    <p>Dengan bekerja sama dengan lebih dari 50 pengrajin lokal di berbagai daerah, kami tidak hanya menghasilkan produk berkualitas tetapi juga memberdayakan komunitas lokal.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h3>Berkualitas Tinggi</h3>
+                                <p>Setiap produk melalui proses kontrol kualitas yang ketat.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <div>
+                                <h3>Ramah Lingkungan</h3>
+                                <p>Menggunakan bahan-bahan alami dan ramah lingkungan.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-handshake"></i>
+                            <div>
+                                <h3>Memberdayakan</h3>
+                                <p>Memberdayakan pengrajin lokal dan komunitas.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <div>
+                                <h3>Pengiriman Cepat</h3>
+                                <p>Pengiriman ke seluruh Indonesia dengan sistem yang handal.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Produk Unggulan Kami</h2>
+                <p>Jelajahi koleksi kerajinan tangan unik kami yang dibuat dengan penuh dedikasi dan keahlian.</p>
+            </div>
+            
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kerajinan Anyaman Rotan">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Anyaman</div>
+                        <h3 class="product-title">Tas Anyaman Rotan</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <p class="product-price">Rp 245.000</p>
+                        <button class="btn btn-primary" onclick="addToCart('Tas Anyaman Rotan', 245000)">Tambah ke Keranjang</button>
+                        <button class="btn btn-whatsapp" style="margin-top: 15px; width: 100%;" onclick="orderViaWhatsApp('Tas Anyaman Rotan', 245000)">
+                            <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gerabah Keramik">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Keramik</div>
+                        <h3 class="product-title">Set Gerabah Keramik</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <p class="product-price">Rp 320.000</p>
+                        <button class="btn btn-primary" onclick="addToCart('Set Gerabah Keramik', 320000)">Tambah ke Keranjang</button>
+                        <button class="btn btn-whatsapp" style="margin-top: 15px; width: 100%;" onclick="orderViaWhatsApp('Set Gerabah Keramik', 320000)">
+                            <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRSm6EUtXWE1TeXNfUmVDScMLEFNXgq7UcVg&s" alt="Batik Tulis">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Batik</div>
+                        <h3 class="product-title">Kain Batik Tulis Motif Modern</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <p class="product-price">Rp 185.000</p>
+                        <button class="btn btn-primary" onclick="addToCart('Kain Batik Tulis Motif Modern', 185000)">Tambah ke Keranjang</button>
+                        <button class="btn btn-whatsapp" style="margin-top: 15px; width: 100%;" onclick="orderViaWhatsApp('Kain Batik Tulis Motif Modern', 185000)">
+                            <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnwqbR8VStVZ7lNFkw98oEDjQyJbnVRuGW9Q&s" alt="Ukiran Kayu">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Ukiran</div>
+                        <h3 class="product-title">Ukiran Kayu Relief Naga</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <p class="product-price">Rp 450.000</p>
+                        <button class="btn btn-primary" onclick="addToCart('Ukiran Kayu Relief Naga', 450000)">Tambah ke Keranjang</button>
+                        <button class="btn btn-whatsapp" style="margin-top: 15px; width: 100%;" onclick="orderViaWhatsApp('Ukiran Kayu Relief Naga', 450000)">
+                            <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#products" class="btn btn-secondary">Lihat Semua Produk</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lokasi & Peta</h2>
+                <p>Temukan lokasi toko fisik kami dan kunjungi untuk melihat produk langsung.</p>
+            </div>
+            
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Kunjungi Toko Kami</h3>
+                    <p>Anda dapat mengunjungi toko fisik kami untuk melihat koleksi produk langsung, berkonsultasi dengan ahli kerajinan, atau mengikuti workshop yang kami adakan secara berkala.</p>
+                    
+                    <div class="location-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat Lengkap</h4>
+                            <p>Jl. Kerajinan No. 123, Kelurahan Seni, Kecamatan Kreatif, Yogyakarta 55111, Indonesia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-detail">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Jam Operasional</h4>
+                            <p><strong>Senin - Jumat:</strong> 08.00 - 17.00 WIB</p>
+                            <p><strong>Sabtu:</strong> 08.00 - 14.00 WIB</p>
+                            <p><strong>Minggu & Hari Libur:</strong> Tutup</p>
+                        </div>
+                    </div>
+                    
+                    <div class="location-detail">
+                        <i class="fas fa-car"></i>
+                        <div>
+                            <h4>Akses & Parkir</h4>
+                            <p>Tersedia area parkir yang luas untuk mobil dan motor. Lokasi strategis di pusat kota dengan akses transportasi umum yang mudah.</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://maps.google.com/?q=Jl.+Kerajinan+No.+123,+Yogyakarta" 
+                       class="btn btn-primary" 
+                       target="_blank">
+                        <i class="fas fa-directions"></i> Dapatkan Petunjuk Arah
+                    </a>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.2873467622515!2d110.36711137507807!3d-7.759101292241866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a599a0272f6d5%3A0x6f6b7b81a3c0c9c0!2sYogyakarta%2C%20Kota%20Yogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1689324567890!5m2!1sid!2sid" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Apa Kata Pelanggan Kami</h2>
+                <p>Dengarkan pengalaman langsung dari pelanggan yang telah membeli produk kerajinan tangan kami.</p>
+            </div>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-container">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Produk kerajinan tangan dari CraftHub Artisan sangat berkualitas dan unik. Saya membeli tas anyaman rotan dan kualitasnya melebihi ekspektasi. Pengiriman juga cepat dan aman. Pelayanan customer service sangat ramah dan responsif!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Wijaya">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Wijaya</h4>
+                                <p>Jakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Set gerabah keramik yang saya beli sangat indah dan fungsional. Detailnya halus dan menunjukkan keahlian pengrajin yang tinggi. Pengemasan aman dan sampai dengan selamat. Pasti akan beli lagi produk lainnya. Recommended!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Budi Santoso">
+                            </div>
+                            <div class="author-info">
+                                <h4>Budi Santoso</h4>
+                                <p>Surabaya</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "Kain batik tulisnya sangat halus dan motifnya cantik. Warna tidak luntur setelah dicuci. Saya senang bisa mendukung produk lokal dengan kualitas ekspor seperti ini. Pengiriman cepat dan packaging sangat rapi. Terima kasih CraftHub!"
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maya Purnama">
+                            </div>
+                            <div class="author-info">
+                                <h4>Maya Purnama</h4>
+                                <p>Bandung</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hubungi Kami</h2>
+                <p>Jika Anda memiliki pertanyaan atau ingin memesan produk secara custom, jangan ragu untuk menghubungi kami.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Alamat</h3>
+                            <p>Jl. Kerajinan No. 123, Yogyakarta 55111</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telepon</h3>
+                            <p>(0274) 567890</p>
+                            <p>0812-3456-7890 (WhatsApp)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp</h3>
+                            <p><a href="https://wa.me/6281234567890" style="color: var(--primary); text-decoration: underline;" target="_blank">+62 812-3456-7890</a></p>
+                            <p>Klik untuk chat langsung</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@crafthubartisan.com</p>
+                            <p>order@crafthubartisan.com</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/6281234567890?text=Halo%20CraftHub%20Artisan,%20saya%20ingin%20bertanya%20tentang%20produk%20Anda" 
+                       class="btn btn-whatsapp" 
+                       target="_blank"
+                       style="margin-top: 20px;">
+                        <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
+                    </a>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">No. Telepon/WhatsApp</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">Pilih Subjek</option>
+                                <option value="Pertanyaan Produk">Pertanyaan Produk</option>
+                                <option value="Pemesanan">Pemesanan</option>
+                                <option value="Custom Order">Custom Order</option>
+                                <option value="Kerjasama">Kerjasama</option>
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
+                            Atau langsung hubungi kami via WhatsApp: 
+                            <a href="https://wa.me/6281234567890" style="color: var(--primary);" target="_blank">+62 812-3456-7890</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-hands"></i> CraftHub Artisan
+                    </div>
+                    <p>Kami berkomitmen untuk melestarikan kerajinan tangan tradisional Indonesia sambil memberdayakan pengrajin lokal dan menyediakan produk berkualitas tinggi untuk pelanggan kami.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#location">Lokasi & Peta</a></li>
+                        <li><a href="#testimonials">Testimoni</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Produk Kami</h3>
+                    <ul>
+                        <li><a href="#products">Anyaman Rotan</a></li>
+                        <li><a href="#products">Keramik & Gerabah</a></li>
+                        <li><a href="#products">Batik Tulis</a></li>
+                        <li><a href="#products">Ukiran Kayu</a></li>
+                        <li><a href="#products">Tenun Ikat</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Hubungi Kami</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Jl. Kerajinan No. 123, Yogyakarta</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> (0274) 567890</p>
+                    <p><i class="fab fa-whatsapp" style="margin-right: 10px;"></i> +62 812-3456-7890</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CraftHub Artisan. Semua hak dilindungi. | Dibuat dengan <i class="fas fa-heart" style="color: #ff6b6b;"></i> untuk UMKM Indonesia</p>
+                <p style="margin-top: 10px;">WhatsApp: <a href="https://wa.me/6281234567890" style="color: var(--primary);" target="_blank">+62 812-3456-7890</a> | 
+                   Email: <a href="mailto:info@crafthubartisan.com" style="color: var(--primary);">info@crafthubartisan.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Notification -->
+    <div id="cartNotification" style="display: none; position: fixed; bottom: 120px; right: 20px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; padding: 20px; border-radius: var(--border-radius); box-shadow: var(--shadow); z-index: 1000; max-width: 300px; animation: slideInRight 0.5s ease forwards;">
+        <span id="cartMessage"></span>
+        <button onclick="closeCartNotification()" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer;">×</button>
+    </div>
+
+    <script>
+        // Create Particle Background
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                // Random color variation
+                const hue = 40 + Math.random() * 20; // Yellowish colors
+                particle.style.background = `hsl(${hue}, 80%, 60%)`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links with animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll animation for sections
+        function checkScroll() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+            const triggerBottom = windowHeight * 0.8;
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+        
+        // Testimonial Slider
+        const testimonialContainer = document.querySelector('.testimonial-container');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        function showSlide(slideIndex) {
+            testimonialContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+            
+            currentSlide = slideIndex;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % dots.length;
+            showSlide(currentSlide);
+        }
+        
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function stopSlider() {
+            clearInterval(slideInterval);
+        }
+        
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const slideIndex = parseInt(this.getAttribute('data-slide'));
+                showSlide(slideIndex);
+                stopSlider();
+                startSlider();
+            });
+        });
+        
+        // Auto slide testimonial
+        startSlider();
+        
+        // Contact Form Submission with animation
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            
+            // Add animation to button
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission delay
+            setTimeout(() => {
+                // Show success message with animation
+                const successMessage = document.createElement('div');
+                successMessage.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+                    color: white;
+                    padding: 20px;
+                    border-radius: var(--border-radius);
+                    box-shadow: var(--shadow);
+                    z-index: 1000;
+                    animation: slideInRight 0.5s ease forwards;
+                `;
+                successMessage.innerHTML = `
+                    <h4 style="margin-bottom: 10px;">Terima kasih ${name}!</h4>
+                    <p>Pesan Anda telah berhasil dikirim. Kami akan menghubungi Anda via WhatsApp (${phone}) dalam waktu 1x24 jam.</p>
+                `;
+                document.body.appendChild(successMessage);
+                
+                // Reset button
+                submitBtn.innerHTML = 'Kirim Pesan';
+                submitBtn.disabled = false;
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Remove message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.animation = 'slideOutRight 0.5s ease forwards';
+                    setTimeout(() => {
+                        document.body.removeChild(successMessage);
+                    }, 500);
+                }, 5000);
+                
+            }, 1500);
+        });
+        
+        // Add to Cart Function with enhanced animation
+        function addToCart(productName, productPrice) {
+            const cartNotification = document.getElementById('cartNotification');
+            const cartMessage = document.getElementById('cartMessage');
+            
+            // Format price to Indonesian Rupiah
+            const formattedPrice = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(productPrice);
+            
+            cartMessage.textContent = `${productName} telah ditambahkan ke keranjang! (${formattedPrice})`;
+            
+            cartNotification.style.display = 'block';
+            
+            // Add cart bounce animation to button
+            const buttons = document.querySelectorAll(`button[onclick="addToCart('${productName}', ${productPrice})"]`);
+            buttons.forEach(button => {
+                button.style.animation = 'bounce 0.5s';
+                setTimeout(() => {
+                    button.style.animation = '';
+                }, 500);
+            });
+            
+            // In a real application, you would update the cart state here
+            console.log(`Added to cart: ${productName} - ${formattedPrice}`);
+        }
+        
+        function closeCartNotification() {
+            const cartNotification = document.getElementById('cartNotification');
+            cartNotification.style.animation = 'slideOutRight 0.5s ease forwards';
+            setTimeout(() => {
+                cartNotification.style.display = 'none';
+                cartNotification.style.animation = '';
+            }, 500);
+        }
+        
+        // Order via WhatsApp Function
+        function orderViaWhatsApp(productName, productPrice) {
+            // Format price to Indonesian Rupiah
+            const formattedPrice = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(productPrice);
+            
+            // Create WhatsApp message
+            const message = `Halo CraftHub Artisan, saya ingin memesan produk:\n\nNama Produk: ${productName}\nHarga: ${formattedPrice}\n\nBisa tolong informasikan ketersediaan dan cara pemesanannya?`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // WhatsApp number (change this to your actual WhatsApp number)
+            const whatsappNumber = '6281234567890';
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+        }
+        
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+                40% {transform: translateY(-10px);}
+                60% {transform: translateY(-5px);}
+            }
+            
+            @keyframes slideInRight {
+                from {transform: translateX(100%); opacity: 0;}
+                to {transform: translateX(0); opacity: 1;}
+            }
+            
+            @keyframes slideOutRight {
+                from {transform: translateX(0); opacity: 1;}
+                to {transform: translateX(100%); opacity: 0;}
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            // Create particles
+            createParticles();
+            
+            // Initial scroll check
+            checkScroll();
+            
+            // Show all sections after page loads
+            setTimeout(() => {
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.add('visible');
+                });
+            }, 300);
+            
+            // Add animation to hero section
+            const heroTitle = document.querySelector('.hero h1');
+            const heroText = document.querySelector('.hero p');
+            const heroButtons = document.querySelector('.hero-buttons');
+            
+            // Add CSS for initial state
+            heroTitle.style.opacity = '0';
+            heroTitle.style.transform = 'translateY(30px)';
+            heroText.style.opacity = '0';
+            heroText.style.transform = 'translateY(30px)';
+            heroButtons.style.opacity = '0';
+            heroButtons.style.transform = 'translateY(30px)';
+            
+            // Animate in sequence
+            setTimeout(() => {
+                heroTitle.style.transition = 'all 1s ease';
+                heroTitle.style.opacity = '1';
+                heroTitle.style.transform = 'translateY(0)';
+            }, 300);
+            
+            setTimeout(() => {
+                heroText.style.transition = 'all 1s ease 0.2s';
+                heroText.style.opacity = '1';
+                heroText.style.transform = 'translateY(0)';
+            }, 600);
+            
+            setTimeout(() => {
+                heroButtons.style.transition = 'all 1s ease 0.4s';
+                heroButtons.style.opacity = '1';
+                heroButtons.style.transform = 'translateY(0)';
+            }, 900);
+        });
+        
+        // Check scroll on scroll event
+        window.addEventListener('scroll', checkScroll);
+        
+        // Initialize page with location hash
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                const targetId = window.location.hash;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }, 500);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
